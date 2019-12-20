@@ -1,32 +1,25 @@
----
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
-  name: mongotesting
+  name: mongo
+  namespace: fiware
 spec:
-  serviceName: "mongotesting"
+  serviceName: "mongo"
   replicas: 3
   template:
     metadata:
       labels:
-        role: mongotesting
+        role: mongo
         environment: test
     spec:
       terminationGracePeriodSeconds: 10
       containers:
-        - name: mongotesting
+        - name: mongo
           image: csp2-centos-1:5000/fiware-mongo:${CICD_EXECUTION_SEQUENCE}
-          resources:
-            limits:
-             memory: "1Gi"
-             cpu: "1000m"
-            requests:
-             memory: "500Mi"
-             cpu: "500m"
           command:
             - mongod
             - "--replSet"
-            - rs3
+            - rs0
             - "--bind_ip"
             - 0.0.0.0
           ports:
@@ -38,12 +31,12 @@ spec:
              - "-c"          
              - |
                set -ex  
-               mongo --eval "rs.initiate({_id: 'rs3',members: [{_id: 0, host: 'mongo-0.mongo.fiware.svc.cluster.local:27017'},{_id: 1, host: 'mongo-1.mongo.updateandrollback.svc.cluster.local:27017'},{_id: 2, host: 'mongo-2.mongo.fiware.svc.cluster.local:27017'}]})";
+               mongo --eval "rs.initiate({_id: 'rs0',members: [{_id: 0, host: 'mongo-0.mongo.fiware.svc.cluster.local:27017'},{_id: 1, host: 'mongo-1.mongo.fiware.svc.cluster.local:27017'},{_id: 2, host: 'mongo-2.mongo.fiware.svc.cluster.local:27017'}]})";
           volumeMounts:
             - name: mongo-storage
               mountPath: /data/db
         - name: mongo-sidecar
-          image: csp2-centos-1:5000/fiware-mongo-sidecar
+          image: csp2-centos-1:5000/mongo-k8s-sidecar
           env:
             - name: MONGO_SIDECAR_POD_LABELS
               value: "role=mongo,environment=test"
@@ -51,7 +44,7 @@ spec:
   - metadata:
       name: mongo-storage
     spec:
-      storageClassName: standard
+      storageClassName: "mongo-sc"
       accessModes:
         - ReadWriteOnce
       resources:
