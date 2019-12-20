@@ -15,7 +15,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: mongotesting
-          image: csp2-centos-1:5000/fiware-mongo
+          image: csp2-centos-1:5000/fiware-mongo:${CICD_EXECUTION_SEQUENCE}
           resources:
             limits:
              memory: "1Gi"
