@@ -14,7 +14,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: mongo
-          image: csp2-centos-1:5000/fiware-mongo:${CICD_EXECUTION_SEQUENCE}
+          image: csp2-centos-1:5000/IMG_fiware-mongodb_v4.1.13:${CICD_EXECUTION_SEQUENCE}
           command:
             - mongod
             - "--replSet"
