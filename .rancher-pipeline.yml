@@ -16,11 +16,17 @@ stages:
       path: ./mongo_service.yml
   - applyYamlConfig:
       path: ./mongo-statefulset.yaml
+  - runScriptConfig:
+      image: python:latest
+      shellScript: |-
+        apt-get update
+        apt-get install sshpass
+        sshpass -p password ssh -tt -o StrictHostKeyChecking=no newuser@192.168.100.178 ./check_pod_status.sh p-kpggk-pipeline mongo
 - name: Mongo_Test_Stage
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: |+
+      shellScript: |
         apt-get update
         echo Y | apt-get install npm
         npm -v
@@ -29,6 +35,5 @@ stages:
   when:
     branch: {}
     event: {}
-
 timeout: 600
 notification: {}
