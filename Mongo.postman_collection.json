@@ -1,0 +1,521 @@
+{
+	"info": {
+		"_postman_id": "f8ae0b28-4e14-46b4-b6e6-af1473bc901d",
+		"name": "Mongo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RFID registered with IOT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eaefa165-9db0-46f1-8c4b-ab8082a71111",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "fiwareldb"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/registration_raw"
+					}
+				],
+				"url": {
+					"raw": "http://192.168.100.178:30180/iot/devices",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"178"
+					],
+					"port": "30180",
+					"path": [
+						"iot",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RFID not register with IOT(header is empty)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aa7d69c8-c891-4524-a10a-9d26f6b2a6de",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "fiwareldb",
+						"disabled": true
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/registration_raw",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://192.168.100.178:30180/iot/devices",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"178"
+					],
+					"port": "30180",
+					"path": [
+						"iot",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RFID not register with IOT(service path Header empty) Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "74a66fd6-2da5-4739-b3b2-d8e21600505c",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "fiwareldb"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/registration_raw",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://192.168.100.178:30180/iot/devices",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"178"
+					],
+					"port": "30180",
+					"path": [
+						"iot",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RFID connected & pass random ip",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b9584af5-5a69-4976-bc32-507b26e84911",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "fiwareldb"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/registration_raw"
+					}
+				],
+				"url": {
+					"raw": "http://192.168.100.175:30180/iot/devices",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"175"
+					],
+					"port": "30180",
+					"path": [
+						"iot",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RFID not register with IOT(port empty)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a7f65335-18d2-4ecc-8b52-d2c6a3103a0b",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followOriginalHttpMethod": false,
+				"followRedirects": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "fiwareldb"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/registration_raw"
+					}
+				],
+				"url": {
+					"raw": "http://192.168.100.147:/iot/devices",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"147:"
+					],
+					"port": "",
+					"path": [
+						"iot",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RFID not register with IOT(port change)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "add82b2c-82ea-4f4d-a39a-8e7146ec9756",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "fiwareldb"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/registration_raw"
+					}
+				],
+				"url": {
+					"raw": "http://192.168.100.178:30181/iot/devices",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"178"
+					],
+					"port": "30181",
+					"path": [
+						"iot",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RFID not register with IOT(host name not mention)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6dbb2d87-a98e-4db1-8394-8a7ffa34e028",
+						"exec": [
+							"pm.variables.get(\"Could not get any response\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "fiwareldb"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/registration_raw"
+					}
+				],
+				"url": {
+					"raw": "http://:30180/iot/devices",
+					"host": [
+						"http:"
+					],
+					"port": "",
+					"path": [
+						"",
+						":30180",
+						"iot",
+						"devices"
+					],
+					"variable": [
+						{
+							"key": "30180"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RFID not register with IOT(device instead of devices in url)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aef23861-e2bf-4c54-88aa-bf652b14b311",
+						"exec": [
+							"pm.test(\"Response time is less than 404ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "fiwareldb"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/registration_raw"
+					}
+				],
+				"url": {
+					"raw": "http://192.168.100.178:30180/iot/device",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"178"
+					],
+					"port": "30180",
+					"path": [
+						"iot",
+						"device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RFID not register with IOT(all header tags(-H) are removed)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "14d3a383-7927-4d8a-a2bd-573bc5db7436",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "fiware-service",
+						"value": "fiwareldb",
+						"disabled": true
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/registration_raw",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://192.168.100.178:30180/iot/devices",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"178"
+					],
+					"port": "30180",
+					"path": [
+						"iot",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RFID not register with IOT(changed from GET to POST)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f1b35a30-b932-4044-9bfc-7f845fd30a7f",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "fiwareldb"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/registration_raw"
+					}
+				],
+				"url": {
+					"raw": "http://192.168.100.178:30180/iot/devices",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"178"
+					],
+					"port": "30180",
+					"path": [
+						"iot",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
