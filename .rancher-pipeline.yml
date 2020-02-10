@@ -14,7 +14,7 @@ stages:
 - name: deploy
   steps:
   - applyYamlConfig:
-      path: ./mongo_service.yml
+      path: ./mongo-service.yml
   - applyYamlConfig:
       path: ./mongo-statefulset.yaml
   - runScriptConfig:
